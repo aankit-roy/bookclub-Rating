@@ -1,4 +1,5 @@
 import 'package:bookclub/data/data_model/book_data.dart';
+import 'package:bookclub/res/colors/app_colors.dart';
 import 'package:bookclub/res/widgets/section_title.dart';
 import 'package:bookclub/screens/book_details_screen.dart';
 import 'package:bookclub/services/google_api/google_books_api.dart';
@@ -12,39 +13,66 @@ class DiscoverBookScreen extends StatefulWidget {
 }
 
 class _DiscoverBookScreenState extends State<DiscoverBookScreen> {
-  final TextEditingController _searchController = TextEditingController();
-  final GoogleBooksApi _api = GoogleBooksApi();
-   List<Book> _searchResults = [];
-   bool _isSearching = false;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   fetchedSearchBooks();
+  // final TextEditingController _searchController = TextEditingController();
+  // final GoogleBooksApi _api = GoogleBooksApi();
+  //  List<Book> _searchResults = [];
+  //  bool _isSearching = false;
+  // // @override
+  // // void initState() {
+  // //   super.initState();
+  // //   fetchedSearchBooks();
+  // // }
+  //
+  //
+  // Future<void> fetchedSearchBooks(String query) async {
+  //
+  //   if (query.isEmpty) return;
+  //
+  //   setState(() {
+  //     _isSearching = true;
+  //   });
+  //
+  //   try {
+  //     final results = _api.searchBooks(query);
+  //     setState(() {
+  //       _searchResults = results as List<Book>;
+  //     });
+  //   } catch (e) {
+  //     print('Error searching books: $e');
+  //   } finally {
+  //     setState(() {
+  //       _isSearching = false;
+  //     });
+  //   }
   // }
 
 
-  Future<void> fetchedSearchBooks(String query) async {
+  final GoogleBooksApi _api = GoogleBooksApi();
+  final TextEditingController _searchController = TextEditingController();
+  List<Book> _searchResults = [];
+  bool _isLoading = false;
 
+  void _performSearch() async {
+    final query = _searchController.text.trim();
     if (query.isEmpty) return;
 
     setState(() {
-      _isSearching = true;
+      _isLoading = true;
     });
 
     try {
-      final results = _api.searchBooks(query);
+      final results = await _api.searchBooks(query);
       setState(() {
-        _searchResults = results as List<Book>;
+        _searchResults = results;
       });
     } catch (e) {
-      print('Error searching books: $e');
+      print('Error during search: $e');
     } finally {
       setState(() {
-        _isSearching = false;
+        _isLoading = false;
       });
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,13 +87,17 @@ class _DiscoverBookScreenState extends State<DiscoverBookScreen> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: _searchController,
+                cursorColor: AppColors.black,
+
+
                 decoration: InputDecoration(
                   labelText: 'Search Books, Authors, Categories...',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                  ),
                   suffixIcon: IconButton(
                     icon: Icon(Icons.search),
                     onPressed: () {
-                      fetchedSearchBooks(_searchController.text);
+                      _performSearch();
                     },
                   ),
                 ),
@@ -73,7 +105,7 @@ class _DiscoverBookScreenState extends State<DiscoverBookScreen> {
             ),
 
             // Search Results
-            if (_isSearching)
+            if (_isLoading)
               Center(child: CircularProgressIndicator())
             else if (_searchResults.isNotEmpty)
               Column(

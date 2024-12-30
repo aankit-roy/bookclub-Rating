@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'screens/search_bar_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
@@ -35,7 +37,8 @@ class MyApp extends StatelessWidget {
             // Dark theme
             themeMode: ThemeMode.light,
             // home: const HomeScreen(category: "startup") // Replace with your homepage widget
-          home: const DiscoverBookScreen(),
+          // home: const DiscoverBookScreen(),
+          home: const SearchBarScreen(),
         );
       },
     );
