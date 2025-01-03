@@ -88,8 +88,9 @@ class _RootScreenState extends State<RootScreen> {
     const HomeScreen(),
      const DiscoverBookScreen(category: "startup",),
      const SearchBarScreen(),
-     const FavouriteBookScreen(),
+      FavoriteBooksScreen(),
     const ProfileScreen()
+
   ];
 
   // Function to update the selected index when a tab is tapped

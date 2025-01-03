@@ -1,25 +1,25 @@
-
 import 'package:bookclub/data/data_model/book_data.dart';
 import 'package:bookclub/res/colors/app_colors.dart';
 import 'package:bookclub/res/constants/text_sizes.dart';
 import 'package:bookclub/screens/book_details_screen.dart';
 import 'package:bookclub/services/riverpod/favourite_book_notifier.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:page_transition/page_transition.dart';
 
-class BookContainerCard extends ConsumerStatefulWidget {
+class BookCategoryCard extends ConsumerStatefulWidget {
   final Book book;
-  const BookContainerCard({super.key, required this.book});
+  const BookCategoryCard({super.key, required this.book});
 
   @override
-  ConsumerState<BookContainerCard> createState() => _BookContainerCardState();
+  ConsumerState<BookCategoryCard> createState() => _BookCategoryCardState();
 }
 
-class _BookContainerCardState extends ConsumerState<BookContainerCard> {
+class _BookCategoryCardState extends ConsumerState<BookCategoryCard> {
 
-  // bool isFavorite = false;
+
   @override
   Widget build(BuildContext context) {
     final averageRating = widget.book.volumeInfo.averageRating ?? 0.0;
@@ -36,7 +36,7 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
       },
       child: Container(
         width: 140.sp,
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
@@ -69,7 +69,7 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
                   borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
                   child: widget.book.volumeInfo.thumbnail.isNotEmpty
                       ? Image.network(widget.book.volumeInfo.thumbnail,
-                      height: 140.sp, width: double.infinity, fit: BoxFit.cover)
+                      height: 130.sp, width: double.infinity, fit: BoxFit.cover)
                       : const Icon(
                     Icons.book,
                     size: 100,
@@ -80,11 +80,12 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
                   left: -8,
                   child: GestureDetector(
                     onTap: () {
-
-                      ref.read(favoriteBooksProvider.notifier).toggleFavorite(widget.book.id);
                       // setState(() {
                       //   isFavorite = !isFavorite;
                       // });
+                      ref.read(favoriteBooksProvider.notifier).toggleFavorite(widget.book.id);
+
+
                     },
                     child: Icon(
                       isFavorite ? Icons.bookmark : Icons.bookmark_add_outlined,
@@ -97,7 +98,8 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
             ),
             Expanded(
               child: Container(
-                margin: const EdgeInsets.all(8.0),
+                margin: EdgeInsets.all(8),
+
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,10 +144,10 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
                           ),
                         ),
                         const SizedBox(width: 4.0),
-                        Icon(
+                        const Icon(
                           Icons.star,
                           color: Colors.amber,
-                          size: 16.sp,
+                          size: 16.0,
                         ),
                       ],
                     ),
@@ -159,3 +161,4 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
     );
   }
 }
+

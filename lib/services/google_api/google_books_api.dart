@@ -92,7 +92,7 @@ class GoogleBooksApi {
   }
 
   Future<List<Book>> fetchTrendingBooks(String category) async {
-    final url = Uri.parse('$baseUrl?q=$category&orderBy=newest&key=$apiKey');
+    final url = Uri.parse('$baseUrl?q=$category&key=$apiKey');
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -113,10 +113,12 @@ class GoogleBooksApi {
     }
   }
 
-  Future<List<Book>> fetchLatestBooks(String topBooks) async {
+  Future<List<Book>> fetchNewestBooks() async {
     // final url = Uri.parse('$baseUrl/$bookId?key=$apiKey');
     // final url = Uri.parse('$baseUrl?q=&orderBy=newest&maxResults=10&key=$apiKey');
-    final url = Uri.parse('$baseUrl?q=$topBooks&key=$apiKey');
+    final url = Uri.parse('$baseUrl?q=new&orderBy=newest&key=$apiKey');
+
+
     try {
       final response = await http.get(url);
 
@@ -138,8 +140,9 @@ class GoogleBooksApi {
     }
   }
 
-  Future<List<Book>> fetchHighestRatedBooks(String category) async {
-    final url = Uri.parse('$baseUrl?q=$category&orderBy=relevance&key=$apiKey');
+  // its not working
+  Future<List<Book>> fetchFanFavouriteBooks() async {
+    final url = Uri.parse('$baseUrl?q=*&orderBy=relevance&key=$apiKey');
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -153,12 +156,13 @@ class GoogleBooksApi {
         }
       } else {
         throw Exception(
-            'Failed to load highest-rated books: ${response.statusCode}');
+            'Failed to load fan-favourite books: ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('Error fetching highest-rated books: $e');
+      throw Exception('Error fetching fan-favourite books: $e');
     }
   }
+
 
   Future<List<Book>> fetchBooksByAuthor(String author) async {
     final url = Uri.parse('$baseUrl?q=inauthor:$author&key=$apiKey');

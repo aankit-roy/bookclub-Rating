@@ -136,22 +136,22 @@ class _HomeScreenState extends State<HomeScreen> {
             const SectionTitle(
               title: "Top Picks",
             ),
-            BookLists(futureBooks: _api.fetchLatestBooks("Top Books")),
+            BookLists(futureBooks: _api.fetchTrendingBooks("startup")),
             SizedBox(
               height: 10.sp,
             ),
             const SectionTitle(title: 'Best Sellers'),
-            BookLists(futureBooks: _api.fetchLatestBooks("Bestsellers")),
+            BookLists(futureBooks: _api.fetchTrendingBooks("Bestsellers")),
             SizedBox(
               height: 10.sp,
             ),
             const SectionTitle(title: 'Fan Favorites'),
-            BookLists(futureBooks: _api.fetchLatestBooks("Top Books")),
+            BookLists(futureBooks: _api.fetchTrendingBooks("famous")),
             SizedBox(
               height: 10.sp,
             ),
             const SectionTitle(title: 'Newest Books'),
-            BookLists(futureBooks: _api.fetchLatestBooks("Top Books")),
+            BookLists(futureBooks: _api.fetchNewestBooks()),
             SizedBox(
               height: 10.sp,
             ),
