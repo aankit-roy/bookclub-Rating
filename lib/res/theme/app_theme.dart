@@ -12,16 +12,7 @@ class AppTheme {
   // Light Theme
   static ThemeData lightTheme(BuildContext context) {
     return ThemeData(
-      // colorScheme: const ColorScheme.light(
-      //   primary: AppColors.primary,
-      //   secondary: AppColors.secondary, // Accent color
-      //   tertiary: AppColors.tertiary, // Scaffold background
-      //   surface: Colors.white,
-      //   onPrimary: Colors.white,
-      //   onSecondary: Colors.black,
-      //   onSurface: AppColors.textPrimary,
-      // ),
-      // scaffoldBackgroundColor: AppColors.background, // Scaffold Background Color
+    
 
       colorScheme: const ColorScheme.light(
         primary: AppColors.primary, // Primary color

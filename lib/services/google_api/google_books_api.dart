@@ -1,19 +1,17 @@
-
-
 import 'dart:convert';
 import 'package:bookclub/data/data_model/book_data.dart';
 import 'package:http/http.dart' as http;
 
 class GoogleBooksApi {
-
-  static const String apiKey = 'AIzaSyDZpR7ynE2Wad2ZvY3DhiqSjfdnaSur9jA'; // Replace with your API key
+  static const String apiKey =
+      'AIzaSyDZpR7ynE2Wad2ZvY3DhiqSjfdnaSur9jA'; // Replace with your API key
 
   static const String baseUrl = 'https://www.googleapis.com/books/v1/volumes';
 
-
   // Method to search books
   Future<List<Book>> searchBooks(String searchText) async {
-    final url = Uri.parse('$baseUrl?q=$searchText&key=$apiKey&maxResults=20&orderBy=relevance');
+    final url = Uri.parse(
+        '$baseUrl?q=$searchText&key=$apiKey&maxResults=20&orderBy=relevance');
 
     if (searchText.isEmpty) {
       return [];
@@ -40,14 +38,11 @@ class GoogleBooksApi {
     }
   }
 
-
   // Fetch books by category
   Future<List<Book>> fetchBooksByCategory(String category) async {
     final encodedCategory = Uri.encodeComponent(category);
-    final url = Uri.parse('$baseUrl?q=$encodedCategory&key=$apiKey');
-    // final url = Uri.parse('$baseUrl?q=subject:$category&key=$apiKey');
-
-
+    final url = Uri.parse('$baseUrl?q=$encodedCategory&maxResults=20&key=$apiKey');
+    // final url = Uri.parse('$baseUrl?q=$encodedCategory&orderBy=newest&maxResults=20&key=$apiKey');
     try {
       final response = await http.get(url);
 
@@ -58,8 +53,8 @@ class GoogleBooksApi {
         final data = json.decode(response.body) as Map<String, dynamic>;
 
         // Print the full response for debugging
-        print('***********************************Response Data: ${response.body}');
-
+        print(
+            '***********************************Response Data: ${response.body}');
 
         if (data['items'] != null) {
           final books = (data['items'] as List<dynamic>)
@@ -110,7 +105,8 @@ class GoogleBooksApi {
           return [];
         }
       } else {
-        throw Exception('Failed to load trending books: ${response.statusCode}');
+        throw Exception(
+            'Failed to load trending books: ${response.statusCode}');
       }
     } catch (e) {
       throw Exception('Error fetching trending books: $e');
@@ -142,7 +138,6 @@ class GoogleBooksApi {
     }
   }
 
-
   Future<List<Book>> fetchHighestRatedBooks(String category) async {
     final url = Uri.parse('$baseUrl?q=$category&orderBy=relevance&key=$apiKey');
     try {
@@ -157,13 +152,13 @@ class GoogleBooksApi {
           return [];
         }
       } else {
-        throw Exception('Failed to load highest-rated books: ${response.statusCode}');
+        throw Exception(
+            'Failed to load highest-rated books: ${response.statusCode}');
       }
     } catch (e) {
       throw Exception('Error fetching highest-rated books: $e');
     }
   }
-
 
   Future<List<Book>> fetchBooksByAuthor(String author) async {
     final url = Uri.parse('$baseUrl?q=inauthor:$author&key=$apiKey');
@@ -179,12 +174,11 @@ class GoogleBooksApi {
           return [];
         }
       } else {
-        throw Exception('Failed to load books by author: ${response.statusCode}');
+        throw Exception(
+            'Failed to load books by author: ${response.statusCode}');
       }
     } catch (e) {
       throw Exception('Error fetching books by author: $e');
     }
   }
-
-
 }

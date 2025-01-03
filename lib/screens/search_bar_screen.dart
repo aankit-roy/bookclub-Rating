@@ -14,92 +14,7 @@ class SearchBarScreen extends StatefulWidget {
 }
 
 class _SearchBarScreenState extends State<SearchBarScreen> {
-  // final GoogleBooksApi _api = GoogleBooksApi();
-  // final TextEditingController _searchController = TextEditingController();
-  // List<Book> _searchResults = [];
-  // bool _isLoading = false;
-  //
-  // void _performSearch() async {
-  //   final query = _searchController.text.trim();
-  //   if (query.isEmpty) return;
-  //
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-  //
-  //   try {
-  //     final results = await _api.searchBooks(query);
-  //     setState(() {
-  //       _searchResults = results;
-  //     });
-  //   } catch (e) {
-  //     print('Error during search: $e');
-  //   } finally {
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //   }
-  // }
-  //
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: Text('Book Club'),
-  //       bottom: PreferredSize(
-  //         preferredSize: Size.fromHeight(50.0),
-  //         child: Padding(
-  //           padding: const EdgeInsets.all(8.0),
-  //           child: TextField(
-  //             controller: _searchController,
-  //             cursorColor: AppColors.textSecondary,
-  //             decoration: InputDecoration(
-  //               hintText: 'Search by book title, author, or category...',
-  //               prefixIcon: Icon(Icons.search),
-  //               border: OutlineInputBorder(
-  //                 borderRadius: BorderRadius.circular(8.0),
-  //                 borderSide: BorderSide.none,
-  //               ),
-  //               filled: true,
-  //               fillColor: Colors.white,
-  //             ),
-  //             onSubmitted: (_) => _performSearch(),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //     body: _isLoading
-  //         ? Center(child: CircularProgressIndicator())
-  //         : _searchResults.isEmpty
-  //         ? Center(child: Text('No results found'))
-  //         : ListView.builder(
-  //       itemCount: _searchResults.length,
-  //       itemBuilder: (context, index) {
-  //         final book = _searchResults[index];
-  //         return ListTile(
-  //           leading: book.volumeInfo.thumbnail.isNotEmpty
-  //               ? Image.network(book.volumeInfo.thumbnail, width: 50, height: 50, fit: BoxFit.cover)
-  //               : Icon(Icons.book, size: 50),
-  //           title: Text(book.volumeInfo.title),
-  //           subtitle: Text(
-  //             book.volumeInfo.authors.join(', '),
-  //             style: TextStyle(fontSize: 12, color: Colors.grey),
-  //           ),
-  //           onTap: () {
-  //             Navigator.push(
-  //               context,
-  //               MaterialPageRoute(
-  //                 builder: (context) => BookDetailsPage(bookId: book.id),
-  //               ),
-  //             );
-  //           },
-  //         );
-  //       },
-  //     ),
-  //   );
-  // }
-
-
+ 
   final GoogleBooksApi _api = GoogleBooksApi();
   final TextEditingController _searchController = TextEditingController();
   List<Book> _searchResults = [];
@@ -164,7 +79,7 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book Club'),
+        title: Text('Find Your Next Book'),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
           child: Padding(

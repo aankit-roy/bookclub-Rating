@@ -9,7 +9,7 @@ class AppColors {
   static const Color primary = Color(0xFF1E88E5); // Light gray for a slightly darker background
   static const Color secondary = Color(0xFFFFFFFF); // Pure white for cards or subtle sections
   static const Color tertiary = Color(0xEAF5F5F5); // Slightly darker gray for accents or borders
-  static const Color background = Color(0xFFC2BFBF);
+  static const Color background = Color(0xFFE0E0E0);
 
 // Accent and Complementary Colors
   static const Color accent = Color(0xFF1E88E5); // Blue for buttons or highlight elements

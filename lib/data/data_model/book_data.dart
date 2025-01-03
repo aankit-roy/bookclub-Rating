@@ -160,31 +160,7 @@ class PriceList {
 }
 
 
-// class SaleInfo {
-//   final String country;
-//   final String saleability;
-//   final bool isEbook;
-//   final double? price;
-//   final String? buyLink;
-//
-//   SaleInfo({
-//     required this.country,
-//     required this.saleability,
-//     required this.isEbook,
-//     this.price,
-//     this.buyLink,
-//   });
-//
-//   factory SaleInfo.fromJson(Map<String, dynamic> json) {
-//     return SaleInfo(
-//       country: json['country'] ?? 'Unknown',
-//       saleability: json['saleability'] ?? 'Unknown',
-//       isEbook: json['isEbook'] ?? false,
-//       price: json['listPrice']?['amount']?.toDouble(),
-//       buyLink: json['buyLink'],
-//     );
-//   }
-// }
+
 
 class AccessInfo {
   final String country;
