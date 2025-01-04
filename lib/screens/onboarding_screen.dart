@@ -2,7 +2,6 @@
 
 import 'package:bookclub/res/colors/app_colors.dart';
 import 'package:bookclub/res/constants/text_constants.dart';
-import 'package:bookclub/screens/home_screen.dart';
 import 'package:bookclub/screens/root_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

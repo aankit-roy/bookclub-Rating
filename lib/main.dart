@@ -1,9 +1,6 @@
 
 import 'package:bookclub/res/theme/app_theme.dart';
-import 'package:bookclub/screens/discover_book_screen.dart';
-import 'package:bookclub/screens/home_screen.dart';
 import 'package:bookclub/screens/onboarding_screen.dart';
-import 'package:bookclub/screens/root_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
