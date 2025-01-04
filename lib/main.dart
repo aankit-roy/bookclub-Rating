@@ -2,6 +2,7 @@
 import 'package:bookclub/res/theme/app_theme.dart';
 import 'package:bookclub/screens/discover_book_screen.dart';
 import 'package:bookclub/screens/home_screen.dart';
+import 'package:bookclub/screens/onboarding_screen.dart';
 import 'package:bookclub/screens/root_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             darkTheme: AppTheme.darkTheme(context),
             // Dark theme
             themeMode: ThemeMode.light,
-            home: RootScreen(),
+            home: OnboardingScreen(),
             // home: const HomeScreen() // Replace with your homepage widget
           // home: const DiscoverBookScreen(),
           // home: const SearchBarScreen(),
