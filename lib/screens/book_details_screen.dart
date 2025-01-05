@@ -1,5 +1,6 @@
 import 'package:bookclub/data/data_model/book_data.dart';
 import 'package:bookclub/res/constants/text_sizes.dart';
+import 'package:bookclub/services/azure_service.dart';
 import 'package:bookclub/services/google_api/google_books_api.dart';
 import 'package:flutter/material.dart';
 import 'package:bookclub/res/colors/app_colors.dart';
@@ -18,7 +19,9 @@ class BookDetailsPage extends StatefulWidget {
 
 class _BookDetailsPageState extends State<BookDetailsPage> {
   final GoogleBooksApi _api = GoogleBooksApi();
+  final AzureService _azureService = AzureService();
   Book? bookDetails;
+  String? summary;
   bool isLoading = true;
 
   @override
@@ -33,12 +36,25 @@ class _BookDetailsPageState extends State<BookDetailsPage> {
       setState(() {
         bookDetails = data;
       });
+      await fetchSummary();
     } catch (e) {
       print('Error: $e');
     } finally {
       setState(() {
         isLoading = false;
       });
+    }
+  }
+
+  Future<void> fetchSummary() async {
+    try {
+      final volumeInfo = bookDetails?.volumeInfo;
+      final response = await _azureService.getSummary(bookTitle: volumeInfo?.title ?? 'zero to one');
+      setState(() {
+        summary = response;
+      });
+    } catch (e) {
+      print('Error fetching summary: $e');
     }
   }
 
@@ -55,29 +71,6 @@ class _BookDetailsPageState extends State<BookDetailsPage> {
     final accessInfo = bookDetails?.accessInfo;
     final amount = saleInfo?.priceList?.amount;
     final currency = saleInfo?.priceList?.currencyCode;
-
-    String summary = """
-1. Introduction to the Google Books API integration.
-2. Overview of the functionality to search for books.
-3. Understanding how to fetch data from a RESTful API.
-4. Importance of separating concerns in application design.
-5. Implementing the API request in a dedicated service class.
-6. Parsing JSON responses to usable objects in Flutter.
-7. Creating a reusable `GoogleBookApi` class for API operations.
-8. Utilizing state management in the widget to handle UI updates.
-9. Displaying search results dynamically based on user input.
-10. Error handling strategies for API requests.
-11. Using `http` package for making network calls in Dart.
-12. Benefits of modularizing API logic for better maintainability.
-13. Simplifying the widget's logic for improved readability.
-14. Exploring the structure of Google Books API responses.
-15. Managing asynchronous tasks with `Future` and `async/await`.
-16. Implementing a clean architecture for better scalability.
-17. Techniques to handle empty search queries gracefully.
-18. Leveraging Flutter widgets for displaying search results.
-19. Improving user experience with a loading state indicator.
-20. Final thoughts on extending the API for advanced features.
-""";
 
     return Scaffold(
       appBar: AppBar(
