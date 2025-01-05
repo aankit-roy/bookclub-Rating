@@ -69,7 +69,8 @@ class _BookCategoryCardState extends ConsumerState<BookCategoryCard> {
                   borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
                   child: widget.book.volumeInfo.thumbnail.isNotEmpty
                       ? Image.network(widget.book.volumeInfo.thumbnail,
-                      height: 130.sp, width: double.infinity, fit: BoxFit.cover)
+                      height: 110.sp,
+                      width: double.infinity, fit: BoxFit.cover)
                       : const Icon(
                     Icons.book,
                     size: 100,
@@ -97,9 +98,8 @@ class _BookCategoryCardState extends ConsumerState<BookCategoryCard> {
               ],
             ),
             Expanded(
-              child: Container(
-                margin: EdgeInsets.all(8),
-
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,6 +113,7 @@ class _BookCategoryCardState extends ConsumerState<BookCategoryCard> {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    Spacer(),
                     Text(
                       widget.book.volumeInfo.categories.join(', '),
                       style: TextStyle(
@@ -123,6 +124,7 @@ class _BookCategoryCardState extends ConsumerState<BookCategoryCard> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    Spacer(),
                     Text(
                       widget.book.volumeInfo.authors.join(', '),
                       style: TextStyle(
@@ -132,6 +134,7 @@ class _BookCategoryCardState extends ConsumerState<BookCategoryCard> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    Spacer(),
                     Row(
                       children: [
                         Text(

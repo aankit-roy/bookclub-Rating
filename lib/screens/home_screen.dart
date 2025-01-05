@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
           preferredSize: Size.fromHeight(size.height * 0.1),
           child: Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
+                 EdgeInsets.symmetric(horizontal: 14.sp, vertical: 14.sp),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -184,12 +184,18 @@ class SearchBarHolder extends StatelessWidget {
             child: Row(
               children: [
                 const Icon(Icons.search, color: AppColors.textPrimary),
-                const SizedBox(width: 8.0),
-                Text(
-                  'Search by book title, author, or category...',
-                  style: TextStyle(
-                      fontSize: TextSizes.titleMedium,
-                      fontWeight: FontWeight.w800),
+                SizedBox(width: 8.sp),
+                Flexible(
+
+                  child: Text(
+                    'Search by book title, author, or category...',
+                    style: TextStyle(
+                        fontSize: TextSizes.titleMedium,
+                        fontWeight: FontWeight.w800),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+
+                  ),
                 ),
               ],
             ),

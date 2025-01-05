@@ -26,7 +26,7 @@ class AppTheme {
       ),
       scaffoldBackgroundColor: AppColors.background, // Default scaffold background
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.primary, // App bar background
+        backgroundColor: AppColors.background, // App bar background
         foregroundColor: AppColors.textPrimary, // Text/icons in app bar
         elevation: 0, // Flat app bar for modern look
         iconTheme: IconThemeData(color: AppColors.iconColor), // App bar icons

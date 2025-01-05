@@ -36,7 +36,7 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
       },
       child: Container(
         width: 140.sp,
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        margin:   EdgeInsets.symmetric(horizontal: 8.sp),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
@@ -52,16 +52,7 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ClipRRect(
-            //   borderRadius: BorderRadius.vertical(top: Radius.circular(8.0)),
-            //   child: book.volumeInfo.thumbnail.isNotEmpty
-            //       ? Image.network(book.volumeInfo.thumbnail,
-            //           height: 140.sp, width: double.infinity, fit: BoxFit.cover)
-            //       : Icon(
-            //           Icons.book,
-            //           size: 100,
-            //         ),
-            // ),
+
 
             Stack(
               children: [
@@ -96,8 +87,8 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
               ],
             ),
             Expanded(
-              child: Container(
-                margin: const EdgeInsets.all(8.0),
+              child: Padding(
+                padding:  EdgeInsets.all(8.sp),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,31 +96,34 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
                     Text(
                       widget.book.volumeInfo.title,
                       style: TextStyle(
-                        fontSize: TextSizes.titleSmall,
-                        fontWeight: FontWeight.w700,
+                        fontSize: TextSizes.titleMedium,
+                        fontWeight: FontWeight.w600,
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    Spacer(),
                     Text(
                       widget.book.volumeInfo.categories.join(', '),
                       style: TextStyle(
-                        fontSize: TextSizes.labelLarge,
+                        fontSize: TextSizes.labelMedium,
                         color: AppColors.textSecondary,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w500,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    Spacer(),
                     Text(
                       widget.book.volumeInfo.authors.join(', '),
                       style: TextStyle(
                           fontSize: TextSizes.labelMedium,
                           color: AppColors.textSecondary,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w800),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    Spacer(),
                     Row(
                       children: [
                         Text(
@@ -138,7 +132,7 @@ class _BookContainerCardState extends ConsumerState<BookContainerCard> {
                               : ' ',
                           style: TextStyle(
                               fontSize: TextSizes.titleMedium,
-                              fontWeight: FontWeight.w700
+                              fontWeight: FontWeight.w600
                           ),
                         ),
                         const SizedBox(width: 4.0),

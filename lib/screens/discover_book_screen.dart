@@ -303,7 +303,7 @@ class _DiscoverBookScreenState extends State<DiscoverBookScreen> {
           // Categories List
           Container(
             width: MediaQuery.of(context).size.width * 0.3, // 20% of the screen
-            color: Colors.grey[200],
+            color: AppColors.background,
             child: ListView.builder(
               itemCount: categories.length,
               itemBuilder: (context, index) {
@@ -329,7 +329,7 @@ class _DiscoverBookScreenState extends State<DiscoverBookScreen> {
 
           Expanded(
             child: Container(
-              padding: const EdgeInsets.all(8.0),
+              // padding: const EdgeInsets.all(8.0),
               child: selectedCategory == null
                   ? Center(
                 child: Text(

@@ -195,7 +195,7 @@ class createPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 50, right: 50, bottom: 100),
+      padding: EdgeInsets.only(left: 50.sp, right: 50.sp, bottom: 100.sp),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -216,7 +216,7 @@ class createPage extends StatelessWidget {
             child: Text(
               title,
               style:  TextStyle(
-                  fontSize: 35.sp,
+                  fontSize: 32.sp,
                   color: AppColors.primary,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -229,7 +229,7 @@ class createPage extends StatelessWidget {
             child: Text(
               description,
               style:  TextStyle(
-                fontSize: 20.sp,
+                fontSize: 18.sp,
                 color: Colors.grey,
                 fontWeight: FontWeight.w500,
               ),

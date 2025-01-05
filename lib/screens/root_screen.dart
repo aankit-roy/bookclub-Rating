@@ -123,9 +123,9 @@ class _RootScreenState extends State<RootScreen> {
         height: 70.h,
         decoration: BoxDecoration(
             color: AppColors.tertiary,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
+            borderRadius:  BorderRadius.only(
+              topLeft: Radius.circular(16.sp),
+              topRight: Radius.circular(16.sp),
             ),
             boxShadow: [
               BoxShadow(
@@ -145,12 +145,14 @@ class _RootScreenState extends State<RootScreen> {
       currentIndex: _currentIndex,
       selectedItemColor: AppColors.primary,
       unselectedItemColor: AppColors.textSecondary,
-      iconSize: 26.sp,
+      iconSize: 24.sp,
       onTap: _onTabTapped,
+
       items: const [
         BottomNavigationBarItem(
             icon: ImageIcon(AssetImage("assets/icons/home.png")),
-            label: 'Home'
+            label: 'Home',
+
         ),
         BottomNavigationBarItem(
             icon:  ImageIcon(AssetImage("assets/icons/discover.png")),

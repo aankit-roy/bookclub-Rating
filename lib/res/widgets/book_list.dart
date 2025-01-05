@@ -10,6 +10,7 @@ class BookLists extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size=MediaQuery.of(context).size;
     return FutureBuilder<List<Book>>(
       future: futureBooks,
       builder: (context, snapshot) {
@@ -22,7 +23,7 @@ class BookLists extends StatelessWidget {
         } else {
           final books = snapshot.data!;
           return SizedBox(
-            height: 240.sp,
+            height: size.height*.34,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: books.length,
