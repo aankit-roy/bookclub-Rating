@@ -175,7 +175,7 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                                       fontSize: TextSizes.labelMedium, color: Colors.grey),
                                 ),
                                 trailing: SizedBox(
-                                  width: 40.sp,
+                                  width: 50.sp,
                                   child: Row(
                                     children: [
                                       Text(
@@ -183,15 +183,15 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                                             ? averageRating.toStringAsFixed(1)
                                             : ' ',
                                         style: TextStyle(
-                                            fontSize: TextSizes.titleSmall,
+                                            fontSize: TextSizes.titleMedium,
                                             fontWeight: FontWeight.w700
                                         ),
                                       ),
                                       SizedBox(width: 4.sp),
-                                      const Icon(
+                                       Icon(
                                         Icons.star,
                                         color: Colors.amber,
-                                        size: 16.0,
+                                        size: 18.sp,
                                       ),
                                     ],
                                   ),

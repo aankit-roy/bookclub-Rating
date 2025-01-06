@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Book Club',
+          'Books Club',
           style: TextStyle(fontSize: TextSizes.headlineMedium),
         ),
         bottom: PreferredSize(
